@@ -45,7 +45,8 @@ arduino = serial.Serial('/dev/ttyACM0', 9600);
 
 def callback(data):
     servo_pose = data.finger_pose
-    arduino.write([servo_pose])
+    # arduino.write(bytes(servo_pose))
+    arduino.write(str(servo_pose))
     rospy.loginfo(rospy.get_caller_id() + " I heard %d", servo_pose)
 
 def listener():
@@ -57,13 +58,18 @@ def listener():
     rospy.init_node('HandController', anonymous=True)
     rospy.Subscriber("finger_pose", Finger, callback)
     pub = rospy.Publisher('finger_status', Finger, queue_size=10)
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(50)
+    data_list = []
     while not rospy.is_shutdown():
-        string_pose = "I read: " + arduino.read().strip()
+        data = arduino.readline().rstrip()
+        data_list.append(data)
+        print data_list
+        string_pose = "I read: " + data
+    
         rospy.loginfo(string_pose)
         pub.publish(string_pose)
         rate.sleep()
-
+    
     # arduino.open()
     
     # spin() simply keeps python from exiting until this node is stopped

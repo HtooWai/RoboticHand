@@ -59,7 +59,7 @@ def listener():
     pub = rospy.Publisher('finger_status', Finger, queue_size=10)
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():
-        string_pose = "I read: " + str(type(arduino.read()))
+        string_pose = "I read: " + arduino.read().strip()
         rospy.loginfo(string_pose)
         pub.publish(string_pose)
         rate.sleep()
