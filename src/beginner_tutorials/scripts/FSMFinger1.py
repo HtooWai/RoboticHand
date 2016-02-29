@@ -91,11 +91,8 @@ def startFSM():
     pub = rospy.Publisher('finger_status', Sensor, queue_size=10)
     self.m_sen = board.analog_read(SENSOR)
     pub.publish(self.m_sen)
-<<<<<<< Updated upstream
+
     if self.m_sen > 500 or self.m_pos == 180:
-=======
-    if self.m_sen > 500 or self.m_pos = 180:
->>>>>>> Stashed changes
         self.curstate = 'close'
     else:
         self.curstate = 'open'

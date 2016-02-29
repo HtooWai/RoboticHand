@@ -44,43 +44,44 @@ signal.signal(signal.SIGINT, signal_handler)
 
 class FSMHand():
 
-    # Initialize fingers and wrist pos
-    self.t_pos = 0
-    self.i_pos = 0
-    self.m_pos = 0
-    self.r_pos = 0
-    self.l_pos = 0
-    self.w_pos = 90
+    def __init__(self):
+        # Initialize fingers and wrist pos
+        self.t_pos = 0
+        self.i_pos = 0
+        self.m_pos = 0
+        self.r_pos = 0
+        self.l_pos = 0
+        self.w_pos = 90
 
-    # Initialize sensor values
-    self.t_sen = 0
-    self.i_sen = 0
-    self.m_sen = 0
-    self.r_sen = 0
-    self.l_sen = 0
+        # Initialize sensor values
+        self.t_sen = 0
+        self.i_sen = 0
+        self.m_sen = 0
+        self.r_sen = 0
+        self.l_sen = 0
 
-    # Initialize the arduino
-    arduino = PyMata("/dev/ttyACM0", verbose=False)
+        # Initialize the arduino
+        arduino = PyMata("/dev/ttyACM0", verbose=False)
 
-    # Initialize the servos and sensors on arduino
-    for pin in SERVO_PINS:
-        arduino.servo_config(pin)
-        sensor_pin = 0
-        arduino.enable_analog_reporting(sensor_pin)
-        sensor_pin += 1
+        # Initialize the servos and sensors on arduino
+        for pin in SERVO_PINS:
+            arduino.servo_config(pin)
+            sensor_pin = 0
+            arduino.enable_analog_reporting(sensor_pin)
+            sensor_pin += 1
 
-    # Initialize the hand states
-    self.curstate = 'open'
-    self.states = {}
-    self.transitionTable = {}
+        # Initialize the hand states
+        self.curstate = 'open'
+        self.states = {}
+        self.transitionTable = {}
 
 
-    def move_callback(self, data):
-        servo_pose = data.finger_pose
-        if self.curstate == 'open':
-            arduino.analog_write(MIDDLE_SERVO, servo_pose)
-            self.m_pos = servo_pose
-        rospy.loginfo(rospy.get_caller_id() + " I heard %d", servo_pose)
+        def move_callback(self, data):
+            servo_pose = data.finger_pose
+            if self.curstate == 'open':
+                arduino.analog_write(MIDDLE_SERVO, servo_pose)
+                self.m_pos = servo_pose
+            rospy.loginfo(rospy.get_caller_id() + " I heard %d", servo_pose)
 
 
 def startFSM():
@@ -90,6 +91,7 @@ def startFSM():
     pub = rospy.Publisher('finger_status', Sensor, queue_size=10)
     self.m_sen = board.analog_read(SENSOR)
     pub.publish(self.m_sen)
+
     if self.m_sen > 500 or self.m_pos == 180:
         self.curstate = 'close'
     else:
