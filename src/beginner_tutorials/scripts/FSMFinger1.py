@@ -76,12 +76,12 @@ class FSMHand():
         self.transitionTable = {}
 
 
-        def move_callback(self, data):
-            servo_pose = data.finger_pose
-            if self.curstate == 'open':
-                arduino.analog_write(MIDDLE_SERVO, servo_pose)
-                self.m_pos = servo_pose
-            rospy.loginfo(rospy.get_caller_id() + " I heard %d", servo_pose)
+    def move_callback(self, data):
+        servo_pose = data.finger_pose
+        if self.curstate == 'open':
+            arduino.analog_write(MIDDLE_SERVO, servo_pose)
+            self.m_pos = servo_pose
+        rospy.loginfo(rospy.get_caller_id() + " I heard %d", servo_pose)
 
 
 def startFSM():
