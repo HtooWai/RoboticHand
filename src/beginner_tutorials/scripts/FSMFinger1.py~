@@ -44,7 +44,6 @@ signal.signal(signal.SIGINT, signal_handler)
 
 class FSMHand():
 
-    def __init__(self):
     # Initialize fingers and wrist pos
     self.t_pos = 0
     self.i_pos = 0
