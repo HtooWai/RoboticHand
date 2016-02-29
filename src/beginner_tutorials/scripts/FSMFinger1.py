@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 
-## Simple talker demo that listens to std_msgs/Strings published 
-## to the 'chatter' topic
-## Edited by Htoo Wai to subscribe to input ints and 
-
+## Simple FSM for the hand with 'open' and 'closed' states
 
 import time, sys, signal
 import rospy
@@ -76,6 +73,18 @@ class FSMHand():
         self.transitionTable = {}
 
 
+    #states are a dictionary of name/function pairints stored in a dictionary
+    #i.e. {'open':self.Open}
+    def AddFSMState(self,name,function):
+            self.states[name] = function
+
+    #each state gets its own transition table
+    #a transition table is a list of states to switch to
+    #given a "event"
+    def AddFSMTransition(self,name,transitionDict):
+            #yes we are making a dictionary the value bound to a dictionary key
+            self.transitionTable[name] = transitionDict
+
     def move_callback(self, data):
         servo_pose = data.finger_pose
         if self.curstate == 'open':
@@ -84,20 +93,25 @@ class FSMHand():
         rospy.loginfo(rospy.get_caller_id() + " I heard %d", servo_pose)
 
 
+    def RunFSM(self):
+        pub = rospy.Publisher('finger_status', Sensor, queue_size=10)
+        rate = rospy.Rate(50)
+
+        while not rsopy.is_shutdown():
+            self.m_sen = board.analog_read(SENSOR)
+            pub.publish(self.m_sen)
+
+            if self.m_sen > 500 or self.m_pos == 180:
+                self.curstate = 'close'
+            else:
+                self.curstate = 'open'
+            rate.sleep()
+
 def startFSM():
     hand = FSMHand()
     rospy.init_node('HandController', anonymous=True)
     rospy.Subscriber("finger_pose", Finger, hand.move_callback)
-    pub = rospy.Publisher('finger_status', Sensor, queue_size=10)
-    self.m_sen = board.analog_read(SENSOR)
-    pub.publish(self.m_sen)
-
-    if self.m_sen > 500 or self.m_pos == 180:
-        self.curstate = 'close'
-    else:
-        self.curstate = 'open'
-    rate = rospy.Rate(50)
-    rospy.spin()
+    hand.RunFSM()
 
 if __name__ == '__main__':
     startFSM()
