@@ -5,5 +5,9 @@
    "NUM"
    "<FINGER>"
    "FINGER"
+   "<PRESSURE>"
+   "PRESSURE"
+   "<SENSOR>"
+   "SENSOR"
   ))
 

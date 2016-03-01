@@ -7,4 +7,6 @@
 # new environment variables
 
 # modified environment variables
+export LD_LIBRARY_PATH="/home/viki/catkin_ws/devel/lib/i386-linux-gnu:/opt/ros/indigo/lib/i386-linux-gnu:/home/viki/catkin_ws/devel/lib:/opt/ros/indigo/lib"
+export PKG_CONFIG_PATH="/home/viki/catkin_ws/devel/lib/i386-linux-gnu/pkgconfig:/opt/ros/indigo/lib/i386-linux-gnu/pkgconfig:/home/viki/catkin_ws/devel/lib/pkgconfig:/opt/ros/indigo/lib/pkgconfig"
 export PWD="/home/viki/catkin_ws/build"

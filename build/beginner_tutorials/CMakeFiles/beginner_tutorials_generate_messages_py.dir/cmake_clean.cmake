@@ -2,6 +2,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/beginner_tutorials_generate_messages_py"
   "/home/viki/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/msg/_Num.py"
   "/home/viki/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/msg/_Finger.py"
+  "/home/viki/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/msg/_Pressure.py"
   "/home/viki/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/_AddTwoInts.py"
   "/home/viki/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/msg/__init__.py"
   "/home/viki/catkin_ws/devel/lib/python2.7/dist-packages/beginner_tutorials/srv/__init__.py"

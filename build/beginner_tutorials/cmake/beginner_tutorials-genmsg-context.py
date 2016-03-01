@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/viki/catkin_ws/src/beginner_tutorials/msg/Num.msg;/home/viki/catkin_ws/src/beginner_tutorials/msg/Finger.msg"
+messages_str = "/home/viki/catkin_ws/src/beginner_tutorials/msg/Num.msg;/home/viki/catkin_ws/src/beginner_tutorials/msg/Pressure.msg;/home/viki/catkin_ws/src/beginner_tutorials/msg/Finger.msg"
 services_str = "/home/viki/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv"
 pkg_name = "beginner_tutorials"
 dependencies_str = "std_msgs"

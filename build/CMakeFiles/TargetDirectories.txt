@@ -1,6 +1,7 @@
 /home/viki/catkin_ws/build/beginner_tutorials/CMakeFiles/_beginner_tutorials_generate_messages_check_deps_AddTwoInts.dir
 /home/viki/catkin_ws/build/beginner_tutorials/CMakeFiles/_beginner_tutorials_generate_messages_check_deps_Finger.dir
 /home/viki/catkin_ws/build/beginner_tutorials/CMakeFiles/_beginner_tutorials_generate_messages_check_deps_Num.dir
+/home/viki/catkin_ws/build/beginner_tutorials/CMakeFiles/_beginner_tutorials_generate_messages_check_deps_Pressure.dir
 /home/viki/catkin_ws/build/rosserial/rosserial/CMakeFiles/_catkin_empty_exported_target.dir
 /home/viki/catkin_ws/build/rosserial/rosserial_arduino/CMakeFiles/_rosserial_arduino_generate_messages_check_deps_Adc.dir
 /home/viki/catkin_ws/build/rosserial/rosserial_arduino/CMakeFiles/_rosserial_arduino_generate_messages_check_deps_Test.dir

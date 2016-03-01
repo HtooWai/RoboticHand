@@ -47,6 +47,7 @@ include beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp.d
 
 beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp: /home/viki/catkin_ws/devel/include/beginner_tutorials/Num.h
 beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp: /home/viki/catkin_ws/devel/include/beginner_tutorials/Finger.h
+beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp: /home/viki/catkin_ws/devel/include/beginner_tutorials/Pressure.h
 beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp: /home/viki/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h
 
 /home/viki/catkin_ws/devel/include/beginner_tutorials/Num.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
@@ -63,17 +64,25 @@ beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp: /home/vi
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from beginner_tutorials/Finger.msg"
 	cd /home/viki/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/viki/catkin_ws/src/beginner_tutorials/msg/Finger.msg -Ibeginner_tutorials:/home/viki/catkin_ws/src/beginner_tutorials/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p beginner_tutorials -o /home/viki/catkin_ws/devel/include/beginner_tutorials -e /opt/ros/indigo/share/gencpp/cmake/..
 
+/home/viki/catkin_ws/devel/include/beginner_tutorials/Pressure.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
+/home/viki/catkin_ws/devel/include/beginner_tutorials/Pressure.h: /home/viki/catkin_ws/src/beginner_tutorials/msg/Pressure.msg
+/home/viki/catkin_ws/devel/include/beginner_tutorials/Pressure.h: /opt/ros/indigo/share/gencpp/cmake/../msg.h.template
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/viki/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from beginner_tutorials/Pressure.msg"
+	cd /home/viki/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/viki/catkin_ws/src/beginner_tutorials/msg/Pressure.msg -Ibeginner_tutorials:/home/viki/catkin_ws/src/beginner_tutorials/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p beginner_tutorials -o /home/viki/catkin_ws/devel/include/beginner_tutorials -e /opt/ros/indigo/share/gencpp/cmake/..
+
 /home/viki/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py
 /home/viki/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /home/viki/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv
 /home/viki/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /opt/ros/indigo/share/gencpp/cmake/../msg.h.template
 /home/viki/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h: /opt/ros/indigo/share/gencpp/cmake/../srv.h.template
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/viki/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/viki/catkin_ws/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating C++ code from beginner_tutorials/AddTwoInts.srv"
 	cd /home/viki/catkin_ws/build/beginner_tutorials && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/indigo/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/viki/catkin_ws/src/beginner_tutorials/srv/AddTwoInts.srv -Ibeginner_tutorials:/home/viki/catkin_ws/src/beginner_tutorials/msg -Istd_msgs:/opt/ros/indigo/share/std_msgs/cmake/../msg -p beginner_tutorials -o /home/viki/catkin_ws/devel/include/beginner_tutorials -e /opt/ros/indigo/share/gencpp/cmake/..
 
 beginner_tutorials_generate_messages_cpp: beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp
 beginner_tutorials_generate_messages_cpp: /home/viki/catkin_ws/devel/include/beginner_tutorials/Num.h
 beginner_tutorials_generate_messages_cpp: /home/viki/catkin_ws/devel/include/beginner_tutorials/Finger.h
+beginner_tutorials_generate_messages_cpp: /home/viki/catkin_ws/devel/include/beginner_tutorials/Pressure.h
 beginner_tutorials_generate_messages_cpp: /home/viki/catkin_ws/devel/include/beginner_tutorials/AddTwoInts.h
 beginner_tutorials_generate_messages_cpp: beginner_tutorials/CMakeFiles/beginner_tutorials_generate_messages_cpp.dir/build.make
 .PHONY : beginner_tutorials_generate_messages_cpp

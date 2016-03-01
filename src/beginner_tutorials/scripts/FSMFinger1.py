@@ -94,7 +94,7 @@ class FSMHand():
 
 
     def RunFSM(self):
-        pub = rospy.Publisher('finger_status', Sensor, queue_size=10)
+        pub = rospy.Publisher('finger_status', Pressure, queue_size=10)
         rate = rospy.Rate(50)
 
         while not rsopy.is_shutdown():
