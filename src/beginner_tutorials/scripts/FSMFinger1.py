@@ -99,8 +99,8 @@ class FSMHand():
 
         while not rospy.is_shutdown():
             self.m_sen = self.arduino.analog_read(THUMB_SENSOR)
-			print type(self.m_sen)
-			pub.publish(self.m_sen)
+            print type(self.m_sen)
+            pub.publish(self.m_sen)
 
             if self.m_sen > 500 or self.m_pos == 180:
                 self.curstate = 'close'
