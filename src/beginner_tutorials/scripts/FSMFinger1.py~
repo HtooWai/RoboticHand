@@ -31,14 +31,6 @@ PIN_NUMBER = 1
 DATA_VALUE = 2
 
 
-def signal_handler(sig, frame):
-    print('You pressed Ctrl+C!!!!')
-    if board is not None:
-        board.reset()
-    sys.exit(0)
-
-signal.signal(signal.SIGINT, signal_handler)
-
 class FSMHand():
 
     def __init__(self):
@@ -58,7 +50,7 @@ class FSMHand():
         self.l_sen = 0
 
         # Initialize the arduino
-        self.arduino = PyMata("/dev/ttyACM0", verbose=False)
+        self.arduino = PyMata("/dev/ttyACM0", verbose=True)
 
         # Initialize the servos and sensors on arduino
         for pin in SERVO_PINS:
@@ -71,7 +63,6 @@ class FSMHand():
         self.curstate = 'open'
         self.states = {}
         self.transitionTable = {}
-
 
     #states are a dictionary of name/function pairints stored in a dictionary
     #i.e. {'open':self.Open}
@@ -99,24 +90,27 @@ class FSMHand():
 
         while not rospy.is_shutdown():
             self.m_sen = self.arduino.analog_read(THUMB_SENSOR)
-			print type(self.m_sen)
-            
-			pub.publish(self.m_sen)
+            outdata = Pressure()
+            outdata.sensor1 = self.m_sen
+            pub.publish(outdata)
 
-            if self.m_sen > 500 or self.m_pos == 180:
+            if self.m_sen > 500 or self.m_pos == 181:
                 self.curstate = 'close'
             else:
                 self.curstate = 'open'
+            print "Current State: ", self.curstate
             rate.sleep()
 
 def startFSM():
     hand = FSMHand()
+
     rospy.init_node('HandController', anonymous=True)
     rospy.Subscriber("finger_pose", Finger, hand.move_callback)
     hand.RunFSM()
 
 if __name__ == '__main__':
     startFSM()
+
 
 
 

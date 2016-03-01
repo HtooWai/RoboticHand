@@ -29,10 +29,12 @@
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <Pressure>) ostream)
   "Serializes a message object of type '<Pressure>"
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'sensor1)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'sensor1)) ostream)
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <Pressure>) istream)
   "Deserializes a message object of type '<Pressure>"
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'sensor1)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'sensor1)) (cl:read-byte istream))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<Pressure>)))
@@ -43,19 +45,19 @@
   "beginner_tutorials/Pressure")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<Pressure>)))
   "Returns md5sum for a message object of type '<Pressure>"
-  "1b458477000af20325250212daef80c4")
+  "d588f6383760d0ea083d734da4812bf6")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'Pressure)))
   "Returns md5sum for a message object of type 'Pressure"
-  "1b458477000af20325250212daef80c4")
+  "d588f6383760d0ea083d734da4812bf6")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Pressure>)))
   "Returns full string definition for message of type '<Pressure>"
-  (cl:format cl:nil "uint8 sensor1~%~%"))
+  (cl:format cl:nil "uint16 sensor1~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'Pressure)))
   "Returns full string definition for message of type 'Pressure"
-  (cl:format cl:nil "uint8 sensor1~%~%"))
+  (cl:format cl:nil "uint16 sensor1~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <Pressure>))
   (cl:+ 0
-     1
+     2
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <Pressure>))
   "Converts a ROS message object to a list"

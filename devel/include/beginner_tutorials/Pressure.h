@@ -65,7 +65,7 @@ struct Pressure_
 
 
 
-   typedef uint8_t _sensor1_type;
+   typedef uint16_t _sensor1_type;
   _sensor1_type sensor1;
 
 
@@ -145,12 +145,12 @@ struct MD5Sum< ::beginner_tutorials::Pressure_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "1b458477000af20325250212daef80c4";
+    return "d588f6383760d0ea083d734da4812bf6";
   }
 
   static const char* value(const ::beginner_tutorials::Pressure_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x1b458477000af203ULL;
-  static const uint64_t static_value2 = 0x25250212daef80c4ULL;
+  static const uint64_t static_value1 = 0xd588f6383760d0eaULL;
+  static const uint64_t static_value2 = 0x083d734da4812bf6ULL;
 };
 
 template<class ContainerAllocator>
@@ -169,7 +169,7 @@ struct Definition< ::beginner_tutorials::Pressure_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "uint8 sensor1\n\
+    return "uint16 sensor1\n\
 ";
   }
 
@@ -208,7 +208,7 @@ struct Printer< ::beginner_tutorials::Pressure_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::beginner_tutorials::Pressure_<ContainerAllocator>& v)
   {
     s << indent << "sensor1: ";
-    Printer<uint8_t>::stream(s, indent + "  ", v.sensor1);
+    Printer<uint16_t>::stream(s, indent + "  ", v.sensor1);
   }
 };
 

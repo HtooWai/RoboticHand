@@ -6,13 +6,14 @@ import struct
 
 
 class Pressure(genpy.Message):
-  _md5sum = "1b458477000af20325250212daef80c4"
+  _md5sum = "d588f6383760d0ea083d734da4812bf6"
   _type = "beginner_tutorials/Pressure"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """uint8 sensor1
+  _full_text = """uint16 sensor1
+
 """
   __slots__ = ['sensor1']
-  _slot_types = ['uint8']
+  _slot_types = ['uint16']
 
   def __init__(self, *args, **kwds):
     """
@@ -48,7 +49,7 @@ class Pressure(genpy.Message):
     :param buff: buffer, ``StringIO``
     """
     try:
-      buff.write(_struct_B.pack(self.sensor1))
+      buff.write(_struct_H.pack(self.sensor1))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -60,8 +61,8 @@ class Pressure(genpy.Message):
     try:
       end = 0
       start = end
-      end += 1
-      (self.sensor1,) = _struct_B.unpack(str[start:end])
+      end += 2
+      (self.sensor1,) = _struct_H.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -74,7 +75,7 @@ class Pressure(genpy.Message):
     :param numpy: numpy python module
     """
     try:
-      buff.write(_struct_B.pack(self.sensor1))
+      buff.write(_struct_H.pack(self.sensor1))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
 
@@ -87,11 +88,11 @@ class Pressure(genpy.Message):
     try:
       end = 0
       start = end
-      end += 1
-      (self.sensor1,) = _struct_B.unpack(str[start:end])
+      end += 2
+      (self.sensor1,) = _struct_H.unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
 
 _struct_I = genpy.struct_I
-_struct_B = struct.Struct("<B")
+_struct_H = struct.Struct("<H")

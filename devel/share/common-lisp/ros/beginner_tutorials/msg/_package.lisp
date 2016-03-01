@@ -7,7 +7,5 @@
    "FINGER"
    "<PRESSURE>"
    "PRESSURE"
-   "<SENSOR>"
-   "SENSOR"
   ))
 
