@@ -49,7 +49,6 @@ find_package(catkin REQUIRED COMPONENTS
    FILES
    Num.msg
    Finger.msg
-   Sensor.msg
  )
 
 ## Generate services in the 'srv' folder
