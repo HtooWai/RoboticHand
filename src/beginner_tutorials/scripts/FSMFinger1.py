@@ -58,13 +58,13 @@ class FSMHand():
         self.l_sen = 0
 
         # Initialize the arduino
-        arduino = PyMata("/dev/ttyACM0", verbose=False)
+        self.arduino = PyMata("/dev/ttyACM0", verbose=False)
 
         # Initialize the servos and sensors on arduino
         for pin in SERVO_PINS:
-            arduino.servo_config(pin)
+            self.arduino.servo_config(pin)
             sensor_pin = 0
-            arduino.enable_analog_reporting(sensor_pin)
+            self.arduino.enable_analog_reporting(sensor_pin)
             sensor_pin += 1
 
         # Initialize the hand states
@@ -88,7 +88,7 @@ class FSMHand():
     def move_callback(self, data):
         servo_pose = data.finger_pose
         if self.curstate == 'open':
-            arduino.analog_write(MIDDLE_SERVO, servo_pose)
+            self.arduino.analog_write(MIDDLE_SERVO, servo_pose)
             self.m_pos = servo_pose
         rospy.loginfo(rospy.get_caller_id() + " I heard %d", servo_pose)
 
