@@ -7,7 +7,7 @@ from beginner_tutorials.msg import Finger
  
 class KeyTeleop(object):
   fng_bindings = {'q': 0, 'w': 90, 'e':180}
-  fng_speed = {'i':2, 'n':-2}
+  fng_speed = {'i':5, 'n':-5}
   cmd_bindings = {'q':np.array([1,1]),
                   'w':np.array([1,0]),
                   'e':np.array([1,-1]),

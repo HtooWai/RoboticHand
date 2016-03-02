@@ -17,6 +17,8 @@ LITTLE_SERVO = 10
 WRIST_SERVO = 11
 SERVO_PINS = [3, 5, 6, 9, 10, 11]   # for test usage
 
+LIMITS = [(35,124),(35,150),(35,150),(35,144),(35,150),(0,180)]
+
 # finger and each sensor pin
 THUMB_SENSOR = 0
 INDEX_SENSOR = 1
@@ -114,7 +116,7 @@ if __name__ == '__main__':
 
 
 
-
+# Can be used if pub is declared in the callback
 # def cb_sensor(data):
 #     print("Analog Data: ",
 #           " Pin: ", data[PIN_NUMBER],

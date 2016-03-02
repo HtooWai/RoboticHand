@@ -15,7 +15,9 @@ MIDDLE_SERVO = 6
 RING_SERVO = 9
 LITTLE_SERVO = 10
 WRIST_SERVO = 11
-SERVO_PINS = [3, 5, 6, 9, 10, 11]   # for test usage
+SERVO_PINS = [3, 5, 6, 9, 10]   # for test usage
+
+LIMITS = [(35,124),(35,150),(35,150),(35,144),(35,150),()]
 
 # finger and each sensor pin
 THUMB_SENSOR = 0
@@ -64,6 +66,7 @@ class FSMHand():
         self.states = {}
         self.transitionTable = {}
 
+
     #states are a dictionary of name/function pairints stored in a dictionary
     #i.e. {'open':self.Open}
     def AddFSMState(self,name,function):
@@ -79,6 +82,7 @@ class FSMHand():
     def move_callback(self, data):
         servo_pose = data.finger_pose
         if self.curstate == 'open':
+            for 
             self.arduino.analog_write(MIDDLE_SERVO, servo_pose)
             self.m_pos = servo_pose
         rospy.loginfo(rospy.get_caller_id() + " I heard %d", servo_pose)
@@ -113,7 +117,7 @@ if __name__ == '__main__':
 
 
 
-
+# Can be used if pub is declared in the callback
 # def cb_sensor(data):
 #     print("Analog Data: ",
 #           " Pin: ", data[PIN_NUMBER],
