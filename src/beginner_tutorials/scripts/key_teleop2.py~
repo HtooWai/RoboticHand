@@ -6,8 +6,10 @@ from geometry_msgs.msg import Twist
 from beginner_tutorials.msg import Finger
  
 class KeyTeleop(object):
-  fng_bindings = {'q': 0, 'w': 90, 'e':180}
-  fng_speed = {'i':5, 'n':-5}
+  fng_bindings = {'q': 0, 'w': 10, 'e':20, 'r':30, 't':40, 'y':50, 'u':60,
+                  'a': 70, 's': 80, 'd':90, 'f':100, 'g':110, 'h':120, 'j':130, 
+                  'z': 140, 'x': 150, 'c':160, 'v':170, 'b':180}
+  fng_speed = {'n':2, 'm':-2}
   cmd_bindings = {'q':np.array([1,1]),
                   'w':np.array([1,0]),
                   'e':np.array([1,-1]),
@@ -61,17 +63,16 @@ class KeyTeleop(object):
     Copyright (C) 2013
     Released under BSD License
     --------------------------------------------------
-    H:       Print this menu
+    L:       Print this menu
+    
     Moving around:
-      Q   W   E
-      A   S   D
-      Z   X   Z
-    T/B :   increase/decrease max speeds 10%
-    Y/N :   increase/decrease only linear speed 10%
-    U/M :   increase/decrease only angular speed 10%
+      Q   W   E   R   T   Y   U
+      A   S   D   F   G   H   J
+      Z   X   C   V   B
+    N/M :   increase/decrease pos by 2
     anything else : stop
  
-    G :   Quit
+    K :   Quit/Kill
     --------------------------------------------------
     """
     new_msg = """
@@ -79,14 +80,22 @@ class KeyTeleop(object):
     Copyright (C) 2013
     Released under BSD License
     --------------------------------------------------
-    H:       Print this menu
+    L:       Print this menu
+    
     Moving around:
-      Q   W   E
-      0   90  180
+      Q    W    E    R    T    Y    U
+      0    10   20   30   40   50   60
       
-      I   N
+      A    S    D    F    G   H   J
+      70   80   90   100  110 120 130
+      
+      Z   X   C   V   B
+      140 150 160 170 180
+      
+      N   M
       +   -
-    G : Quit
+      
+    K : Quit/Kill
     """
     self.loginfo(new_msg)
     self.show_status()
@@ -99,7 +108,7 @@ class KeyTeleop(object):
  
   # Used to print teleop status
   def show_status(self):
-    new_msg = 'Status:\tlinear %.2f\tangular %.2f' % (self.speed,self.command)
+    new_msg = 'Status:\tfinger at %d' % (self.command)
     self.loginfo(new_msg)
  
   # For everything that can't be a binding, use if/elif instead
@@ -114,17 +123,17 @@ class KeyTeleop(object):
         self.command = 180
       elif self.command < 0:
         self.command = 0
-    elif ch in self.set_bindings.keys():
-      self.speed = self.speed * (1 + self.set_bindings[ch]*self.inc_ratio)
-      self.show_status()     
-    elif ch == 'g':
+    # elif ch in self.set_bindings.keys():
+    #  self.speed = self.speed * (1 + self.set_bindings[ch]*self.inc_ratio)
+    #  self.show_status()     
+    elif ch == 'k':
       self.loginfo('Quitting')
       # Stop the robot
       finger = Finger()
       self.pub_pose.publish(finger)
       rospy.signal_shutdown('Shutdown')
     else:
-      self.command = 0 # np.array([0, 0])
+      self.command =+ 0 # np.array([0, 0])
  
   def update(self):
     if rospy.is_shutdown():
